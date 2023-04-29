@@ -1,0 +1,181 @@
+<!DOCTYPE html >
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0" >
+
+    <title>SIS Login</title>
+    <style>
+      /* Global styles for the page */
+      body {
+        background-color: #fafafa;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #262626;
+        line-height: 1.5;
+      }
+      /* Styles for the container holding the login form */
+      .container {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      /* Styles for the logo image and text */
+      .logo {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        display: flex;
+
+      }
+
+      .logo img {
+        max-width: 200px;
+        transition: transform 0.4s;
+      }
+      .logo span {
+        font-size: 32px;
+        color: #262626;
+        font-weight: 700;
+      }
+      /* Styles for the form elements */
+      h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #262626;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 10px;
+        color: #262626;
+        font-weight: 600;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #dbdbdb;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #999;
+  font-style: italic;
+  font-size: 14px;
+}
+      
+      input[type="submit"] {
+        background-color: #0095f6;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #04082c;
+      }
+      
+      input[type="submit"]:active {
+        transform: translateY(2px);
+      }
+       /* Styles for the error message */
+      #errorMessage {
+			color: red;
+			margin-top: 10px;
+			text-align: center;
+		}
+    </style>
+  </head>
+  <body>
+    <!-- Container for the login form -->
+    <div class="container">
+      <!-- Logo image and text -->
+      <div class="logo">
+        <img src="logo.png" alt="SIS Logo" id="logo" aria-label="SIS logo" title="Student Information System">
+      </div>
+      <!-- Login form -->
+      <h1>Login</h1>
+      <form>
+        <label for="Student ID">
+        <input type="text" id="Student ID" name="Student ID" aria-label="Student ID" placeholder="Student ID" autocomplete="Student ID">
+      </label>
+        <label for="password">
+        <input type="password" id="password" name="password"aria-label="Password" placeholder="Password" autocomplete="current-password">
+      </label>
+        <p id="errorMessage" aria-label="Error Massege"></p>
+        <input type="submit" value="Log In" id="submit" aria-label="submit" onclick="location.href='myscript.php'"></form>
+      
+    </div>
+    </body>
+    <!-- Starting JavaScript -->
+    <script>
+      // Get references to the logo and submit button elements
+      const logo = document.getElementById("logo");
+      const submit = document.getElementById("submit");
+    
+      // Animate the logo on hover
+      logo.addEventListener("mouseover", () => {
+        logo.style.transform = "scale(1.2)";
+      });
+    
+      logo.addEventListener("mouseout", () => {
+        logo.style.transform = "scale(1)";
+      });
+    
+      // Animate the submit button on hover
+      submit.addEventListener("mouseover", () => {
+        submit.style.backgroundColor = "#04082c";
+      });
+    
+      submit.addEventListener("mouseout", () => {
+        submit.style.backgroundColor = "#0095f6";
+      });
+    
+      submit.addEventListener("mousedown", () => {
+        submit.style.transform = "translateY(2px)";
+      });
+    
+      submit.addEventListener("mouseup", () => {
+        submit.style.transform = "translateY(0)";
+      });
+    
+    
+
+// Validate the form on submit
+const form = document.querySelector("form");
+const username = document.getElementById("Student ID");
+const password = document.getElementById("password");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();   // Prevent the form from submitting by default
+
+  if (username.value === "" || password.value === "") {     // Check if either the username or password field is empty
+    document.getElementById("errorMessage").innerHTML = "Incorrect username or password."   // Display an error message
+  } else {
+    form.submit();   // Submit the form if the fields are not empty
+  }
+});
+
+</script>
+</html>
