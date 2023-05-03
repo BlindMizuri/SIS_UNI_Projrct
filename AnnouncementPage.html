@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Information System</title>
+    <style>
+
+/* Global styles for the page */
+body {
+  background-color: #fafafa;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #262626;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for the heading */
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #262626;
+}
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  padding-top: 20px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #4f36e9;
+  background-color: #ebebeb;
+}
+.sidebar a:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Sidebar button styling */
+#openNav {
+  background-color: transparent;
+  border: none;
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+}
+
+#openNav span {
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+#openNav span:before,
+#openNav span:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 200px);
+  display: flex;
+  align-items: center;
+  height: 60px;
+  z-index: 9999;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+  width: 250px;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+  
+  #openNav {
+    display: none;
+  }
+  
+  
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation sidebar menu -->
+  <div class="sidebar">
+    <a href="#">Announcements</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+    <a href="#">Link 5</a>
+  </div>
+
+  <button id="openNav" >
+    <img src="pngwing.com.png" sizes="10%" style="height: 2.5em; width: 2.5em;">
+  </button>
+  <!-- Logo and Title -->
+ 
+  
+  <main>
+    <div id="logo_title" class="logo">
+      <img src="Logo.png" alt="logo" width="60" height="60">
+      <span style="font-size: 1.5em; margin-left: 10px;">Tishk International University</span>
+    </div>
+    
+  </div>
+
+
+  </main>
+
+  <script>
+const sidebar = document.querySelector('.sidebar');
+const openNav = document.getElementById('openNav');
+const closeNav = document.getElementById('openNav');
+
+openNav.addEventListener('click', () => {
+  sidebar.classList.add('sidebar--open');
+});
+
+closeNav.addEventListener('click', () => {
+  sidebar.classList.remove('sidebar--open');
+});
+
+function adjustLayout() {
+  if (window.innerWidth < 768) {
+    openNav.style.display = 'block';
+    
+    sidebar.classList.remove('sidebar--open');
+  } else {
+    openNav.style.display = 'none';
+    sidebar.classList.add('sidebar--open');
+  }
+}
+
+window.addEventListener('resize', adjustLayout);
+
+  </script>
+  
+
+</html>
