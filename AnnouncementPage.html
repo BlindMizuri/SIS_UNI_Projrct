@@ -117,6 +117,27 @@ h1 {
   width: 250px;
 }
 
+.announcements {
+  padding: 10px;
+  margin-top: 10px;
+}
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+
 @media (min-width: 768px) {
   .sidebar {
     width: 250px;
@@ -125,8 +146,13 @@ h1 {
   #openNav {
     display: none;
   }
-  
-  
+  main {
+  position: fixed;
+  top: 50px;
+  left: 250px;
+  bottom: 0;
+  right: 0;
+}
 }
 
 
@@ -148,15 +174,35 @@ h1 {
   </button>
   <!-- Logo and Title -->
  
-  
-  <main>
-    <div id="logo_title" class="logo">
-      <img src="Logo.png" alt="logo" width="60" height="60">
-      <span style="font-size: 1.5em; margin-left: 10px;">Tishk International University</span>
-    </div>
-    
+  <div id="logo_title" class="logo">
+    <img src="Logo.png" alt="logo" width="60" height="60">
+    <span style="font-size: 1.5em; margin-left: 10px;">Tishk International University</span>
   </div>
 
+  <main>
+        <!-- Your logo and title here -->
+      </div>
+      <div class="announcements">
+        <h2>Announcements</h2>
+        <p>Insert your announcement content here</p>
+      </div>
+    </div>
+    <!-- announcements table -->
+    <table id="notification-table" role="table">
+      <thead>
+        <tr>
+          <th role="columnheader">Name</th>
+          <th role="columnheader">Message</th>
+          <th role="columnheader">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- The table rows will be generated dynamically with JavaScript -->
+      </tbody>
+    </table>
+    
+    
+    
 
   </main>
 
@@ -185,6 +231,85 @@ function adjustLayout() {
 }
 
 window.addEventListener('resize', adjustLayout);
+
+const notifications = [
+  {
+    name: "John Doe",
+    message: "Notification message 1",
+    date: "2023-05-01"
+  },
+  {
+    name: "Jane Smith",
+    message: "Notification message 2",
+    date: "2023-05-02"
+  },
+  {
+    name: "Bob Johnson",
+    message: "Notification message 3",
+    date: "2023-05-03"
+  },
+];
+// assuming notifications is an array of objects with title, content, and date properties
+// and table is the HTML element where the notifications will be displayed
+
+function displayNotifications() {
+  table.innerHTML = ""; // clear previous notifications
+  notifications.forEach((notification) => {
+    const row = document.createElement("tr");
+    const nameCell = document.createElement("td");
+    const contentCell = document.createElement("td");
+    const dateCell = document.createElement("td");
+    nameCell.textContent = notification.name;
+    contentCell.textContent = notification.content;
+    dateCell.textContent = notification.date;
+    nameCell.setAttribute("role", "cell");
+    contentCell.setAttribute("role", "cell");
+    dateCell.setAttribute("role", "cell");
+    row.appendChild(nameCell);
+    row.appendChild(contentCell);
+    row.appendChild(dateCell);
+    table.appendChild(row);
+  });
+}
+
+// Get the container element
+const container = document.getElementById("notification-table");
+
+// Create the table element
+const table = document.createElement("table");
+table.setAttribute("role", "table");
+
+// Add a header row
+const headerRow = table.insertRow();
+headerRow.setAttribute("role", "row");
+const headerCell1 = headerRow.insertCell();
+headerCell1.innerHTML = "Name";
+headerCell1.setAttribute("role", "columnheader");
+const headerCell2 = headerRow.insertCell();
+headerCell2.innerHTML = "Message";
+headerCell2.setAttribute("role", "columnheader");
+const headerCell3 = headerRow.insertCell();
+headerCell3.innerHTML = "Date";
+headerCell3.setAttribute("role", "columnheader");
+
+// Loop through each notification and add a row to the table
+for (let i = 0; i < notifications.length; i++) {
+  const notification = notifications[i];
+  const row = table.insertRow();
+  row.setAttribute("role", "row");
+  const nameCell = row.insertCell();
+  nameCell.innerHTML = notification.name;
+  nameCell.setAttribute("role", "cell");
+  const contentCell = row.insertCell();
+  contentCell.innerHTML = notification.content;
+  contentCell.setAttribute("role", "cell");
+  const dateCell = row.insertCell();
+  dateCell.innerHTML = notification.date;
+  dateCell.setAttribute("role", "cell");
+}
+
+// Append the table to the container
+container.appendChild(table);
 
   </script>
   
