@@ -20,11 +20,17 @@ body {
 /* Styles for the heading */
 h1 {
     font-size: 28px;
-    margin-left: 1em;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
     text-align: left;
     color: #262626;
       }
+      p{
+        font-size: 19px;
+      }
+      .P_red{
+        color: red;
+      }
+      
 /* Sidebar styling */
 .sidebar {
   position: fixed;
@@ -128,20 +134,28 @@ h1 {
 table, tr, td, th{
     border-collapse: collapse;
     border: 1px solid #000000;
-    width: 70%;
+    width: 55%;
+    height: 8px;
     font-weight: bold;
 }
 th{
     padding: 1em;
-    background-color: #988ee4;
+    background-color: #b0afb6;
     width: 10em;
-    font-size: 17px;
+    font-size: 13px;
 }
 td{
     width: 8em;
     text-align: right;
-    font-size: 17px;
+    font-size: 13px;
     padding-right: 1em;
+}
+
+.failed-row {
+  background-color: rgb(231, 124, 124);
+}
+.Exempted-row{
+  background-color: #8c7fe2;
 }
 
 
@@ -155,7 +169,7 @@ td{
   }
   main {
   position: relative;
-  top: 6em;
+  top: 5em;
   left: 27em;
   bottom: 0;
   right: 10em;
@@ -187,7 +201,8 @@ td{
 
   <main>
     <h1>Attendance</h1>
-
+<p>Students failed with NA in previous semesters should attend the repeated course. </p>
+  <p class="P_red"> Official attendance will be counted from the course registration date. </p>
     <table>
         <thead>
         <tr>
@@ -284,4 +299,16 @@ td{
   </main>
 
 </body>
+<script>
+  const tableRows = document.querySelectorAll('table tr:not(:first-child)');
+
+  tableRows.forEach(row => {
+  const statusCell = row.cells[1];
+  if (statusCell.textContent.trim() === 'Fail') {
+    row.classList.add('failed-row');
+  }
+});
+
+</script>
+
 </html>
