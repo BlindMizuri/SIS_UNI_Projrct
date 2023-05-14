@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bachelor of Science in Computer Science Curriculum</title>
+	<style>
+		/* Global styles for the page */
+body {
+  background-color: #fafafa;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #262626;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for the heading */
+h1 {
+    font-size: 28px;
+    margin-bottom: 0.5em;
+    text-align: left;
+    color: #262626;
+      }
+      p{
+        font-size: 19px;
+      }
+      .P_red{
+        color: red;
+      }
+      
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  padding-top: 20px;
+  text-align: left;
+  border-right: 1px solid #ddd;
+  z-index: 9999;
+  background-color: #fafafa;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #4f36e9;
+  background-color: #ebebeb;
+}
+.sidebar a:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Sidebar button styling */
+#openNav {
+  background-color: transparent;
+  border: none;
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+}
+
+#openNav span {
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+#openNav span:before,
+#openNav span:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 200px);
+  display: flex;
+  align-items: center;
+  height: 60px;
+  z-index: 9998;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+}
+.system_title{
+  margin-left: auto;
+  margin-right: 6em;
+  font-size: medium;
+}
+
+.sidebar {
+  width: 250px;
+}
+
+.course_colors{
+      display: flex;
+    }
+    #blue{
+      color: #4f36e9;
+    }
+    #green{
+      padding-left: 1em;
+      color: green;
+    }
+    #orange{
+      padding-left: 1em;
+      color: orange;
+    }
+
+    #red{
+      padding-left: 1em;
+      color: red;
+    }
+
+    #grey{
+      padding-left: 1em;
+      color: grey;
+    }
+    
+    
+    
+    @media only screen and (min-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+  
+  #openNav {
+    display: none;
+  }
+  main {
+  position: relative;
+  top: 5em;
+  left: 27em;
+  bottom: 0;
+  right: 10em;
+}
+}
+		
+
+	</style>
+	
+</head>
+<body>
+ <!-- Navigation sidebar menu -->
+ <div class="sidebar">
+    <a href="AnnouncementPage.html">Announcements</a>
+    <a href="GradePage.html">Grades</a>
+    <a href="Attendance.html">Attendance</a>
+    <a href="#">Course</a>
+    <a href="CurriculumPage.html">Curriculum</a>
+    <a href="#">Profile Settings</a>
+  </div>
+
+  <button id="openNav" >
+    <img src="pngwing.com.png" sizes="10%" style="height: 2.5em; width: 2.5em;">
+  </button>
+  <!-- Logo and Title -->
+ 
+  <div id="logo_title" class="logo">
+    <img src="Logo.png" alt="logo" width="60" height="60">
+    <span style="font-size: 1.5em; margin-left: 10px;">Tishk International University</span>
+    <span class="system_title">System Information System</span>
+  </div>
+<main>
+	<h1>Curriculum</h1>
+  <div class="course_colors">
+    <p id="blue">Not taken yet.</p>
+    <p id="green">Completed successfuly.</p>
+    <p id="orange">Taken courses.</p>
+    <p id="red">Failed courses.</p>
+    <p id="grey">Excused courses.</p>
+  </div>
+
+	<div id="year1" class="year">
+		<h2>Year 1</h2>
+		<ul>
+			<li>Introduction to Programming</li>
+			<li>Calculus I</li>
+			<li>College Writing I</li>
+			<li>Discrete Mathematics</li>
+			<li>General Education Elective</li>
+		</ul>
+	</div>
+
+	<div id="year2" class="year">
+		<h2>Year 2</h2>
+		<ul>
+			<li>Data Structures and Algorithms</li>
+			<li>Calculus II</li>
+			<li>College Writing II</li>
+			<li>Principles of Computer Systems</li>
+			<li>General Education Elective</li>
+		</ul>
+	</div>
+
+	<div id="year3" class="year">
+		<h2>Year 3</h2>
+		<ul>
+			<li>Software Engineering</li>
+			<li>Computer Organization and Architecture</li>
+			<li>Theory of Computation</li>
+			<li>Database Systems</li>
+			<li>General Education Elective</li>
+		</ul>
+	</div>
+
+	<div id="year4" class="year">
+		<h2>Year 4</h2>
+		<ul>
+			<li>Operating Systems</li>
+			<li>Programming Languages and Compilers</li>
+			<li>Artificial Intelligence</li>
+                <li>Computer Networks</li>
+                <li>Senior Project</li>
+            </ul>
+        </div>
+
+	</main>
+        </body>
+        
+        <script>
+           
+        </script>
+
+        </html>
