@@ -16,15 +16,11 @@ body {
   line-height: 1.5;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* Styles for the heading */
-h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #262626;
-}
+
 /* Sidebar styling */
 .sidebar {
   position: fixed;
@@ -47,8 +43,8 @@ h1 {
 }
 
 .sidebar a:hover {
-  color: #4f36e9;
-  background-color: #ebebeb;
+  color: #ffffff;
+  background-color: #007bff;
 }
 .sidebar a:hover::before {
   opacity: 1;
@@ -129,14 +125,7 @@ h1 {
 /* Style the table */
 table {
         border-collapse: collapse;
-        width: 80%;
-        border: 1px solid #ddd;
-      }
-      
-      /* Style the table cells */
-      td {
-        text-align: left;
-        padding: 8px;
+        width: 75%;
         border: 1px solid #ddd;
       }
       
@@ -161,10 +150,11 @@ table {
   font-weight: bold;
   width: 100%;
   padding: 5px;
+  height: 2em;
 }
 
 .notification-name {
-  flex: 1;
+  flex: 2;
   margin-right: 10px;
   font-weight: bold;
   white-space: nowrap;
@@ -173,7 +163,7 @@ table {
 }
 
 .notification-message {
-  flex: 6;
+  flex: 5;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -206,23 +196,75 @@ table {
 
 
 
-@media (min-width: 768px) {
-  .sidebar {
-    width: 250px;
-  }
+ 
   
   #openNav {
     display: none;
   }
   main {
-  position: fixed;
+  position: relative;
   top: 50px;
-  left: 28em;
+  left: 25em;
   bottom: 0;
-  right: 0;
-}
+  right: 10em;
 }
 
+
+
+
+.message {
+      border-left: 4px solid #007bff;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #fff;
+      width: 75%;
+    }
+
+    .message .name {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .message .title {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .message .publish-date {
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .message .deadline {
+      font-weight: bold;
+      color: red;
+      margin-top: 5px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #888;
+      margin-bottom: 5px;
+    }
+    
+    .messageContent {
+      margin-bottom: 10px;
+    }
+
+    .popup {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      z-index: 9999;
+      width: 72.9%;
+    }
+    .popup.show {
+      display: block;
+    }
 
   </style>
 </head>
@@ -230,11 +272,13 @@ table {
 
   <!-- Navigation sidebar menu -->
   <div class="sidebar">
-    <a href="#">Announcements</a>
-    <a href="#">Grades</a>
-    <a href="#">Attendance</a>
-    <a href="#">Accounting</a>
-    <a href="#">Settings</a>
+    <a href="HomePage.html">Home</a>
+    <a href="AnnouncementPage.html">Announcements</a>
+    <a href="Attendance.html">Attendance</a>
+    <a href="GradePage.html">Grades</a>
+    <a href="CourseRegistraion.html">Course registration</a>
+    <a href="CurriculumPage.html">Curriculum</a>
+    <a href="ProfileSetting.html">Profile Settings</a>
   </div>
 
   <button id="openNav" >
@@ -245,61 +289,67 @@ table {
   <div id="logo_title" class="logo">
     <img src="Logo.png" alt="logo" width="60" height="60">
     <span style="font-size: 1.5em; margin-left: 10px;">Tishk International University</span>
-    <span class="system_title">System Information System</span>
+    <span class="system_title">Student Information System</span>
   </div>
 
   <main>
     <div class="announcements">
       <h2>Announcements</h2>
     </div>
-    <table>
+    <table id="announcementList">
       <tbody id="notification-table">
 
       </tbody>
     </table>
+    <div id="popup" class="popup">
+      <div class="message">
+        <div class="label">Name:</div>
+        <div class="name">Alaa Ghazi</div>
+  
+        <div class="label">Title:</div>
+        <div class="title">Homework</div>
+  
+        <div class="label">Published:</div>
+        <div class="publish-date">2023-05-11</div>
+  
+        <div class="label">Content:</div>
+        <div class="messageContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet nulla eu ex pretium ultrices. Vestibulum tempus eros a libero tincidunt, ut placerat ligula tincidunt. Duis fermentum, tellus at rhoncus efficitur, elit orci auctor est, id luctus est orci vel tellus. Donec vehicula mauris sit amet nisi consequat, eu eleifend lacus dignissim.</div>
+  
+        <div class="label">Deadline:</div>
+        <div class="deadline">2023-05-20</div>
+      </div>
+  
   </main>
 
   <script>
 const sidebar = document.querySelector('.sidebar');
 const openNav = document.getElementById('openNav');
-const closeNav = document.getElementById('openNav');
+const closeNav = document.getElementById('closeNav');
 
 openNav.addEventListener('click', () => {
   sidebar.classList.add('sidebar--open');
 });
 
-closeNav.addEventListener('click', () => {
-  sidebar.classList.remove('sidebar--open');
+openNav.addEventListener('click', () => {
+  sidebar.classList.remove('sidebar--close');
 });
 
-function adjustLayout() {
-  if (window.innerWidth < 768) {
-    openNav.style.display = 'block';
-    
-    sidebar.classList.remove('sidebar--open');
-  } else {
-    openNav.style.display = 'none';
-    sidebar.classList.add('sidebar--open');
-  }
-}
-
-window.addEventListener('resize', adjustLayout);
 
 const notifications = [
   {
     name: "Alaa Ghazi",
-    message: "Quiz Posponed",
-    date: "2023-05-01"
+    message: "Homework",
+    date: "2023-05-11"
   },
   {
     name: "Rebin Muhammed",
     message: "Web Design",
-    date: "2023-05-02"
+    date: "2023-05-04"
   },
   {
     name: "Savraddin",
     message: "Course schedule",
-    date: "2023-05-03"
+    date: "2023-05-01"
   },
 ];
 
@@ -312,13 +362,28 @@ notifications.forEach((notification) => {
   row.innerHTML = `
     <td>
       <div class="notification-header">
-            <span class="notification-name">${notification.name}</span>
-            <span class="notification-message">${notification.message}</span>
-            <span class="notification-date">${notification.date}</span>
-        </div>
+        <span class="notification-name">${notification.name}</span>
+        <span class="notification-message">${notification.message}</span>
+        <span class="notification-date">${notification.date}</span>
+      </div>
     </td>
   `;
+
+  const message = row.querySelector('.notification-header');
+  message.addEventListener('click', (event) => {
+    const clickedMessage = event.currentTarget;
+    const tableRect = table.getBoundingClientRect();
+    const messageRect = clickedMessage.getBoundingClientRect();
+    const top = messageRect.top - 20;
+    const left = messageRect.left - tableRect.left - 2;
+
+    popup.style.top = `${top}px`;
+    popup.style.left = `${left}px`;
+    popup.classList.toggle('show');
+  });
+
   
+
   table.appendChild(row);
 });
 
@@ -327,6 +392,11 @@ function openNotification(message) {
       }
 
 
+
+      
+   
+
+     
   </script>
   
 
