@@ -35,6 +35,8 @@
   padding-top: 20px;
   text-align: left;
   border-right: 1px solid #ddd;
+  z-index: 9999;
+  background-color: #fafafa;
 }
 
 .sidebar a {
@@ -47,8 +49,8 @@
 }
 
 .sidebar a:hover {
-  color: #4f36e9;
-  background-color: #ebebeb;
+  color: #ffffff;
+  background-color: #007bff;
 }
 .sidebar a:hover::before {
   opacity: 1;
@@ -152,11 +154,10 @@
         padding-right: 20px;
         height: 3em;
       }
-      @media (min-width: 768px) {
+      
   .sidebar {
     width: 250px;
   }
-  
   #openNav {
     display: none;
   }
@@ -167,7 +168,7 @@
   bottom: 0;
   right: 0;
 }
-}
+
     </style>
   </head>
   <body>
@@ -175,13 +176,15 @@
 
       <!-- Navigation sidebar menu -->
   <div class="sidebar">
-    <a href="#">Announcements</a>
-    <a href="#">Grades</a>
-    <a href="#">Attendance</a>
-    <a href="#">courses</a>
-    <a href="#">Accounting</a>
-    <a href="#">Settings</a>
+    <a href="HomePage.html">Home</a>
+    <a href="AnnouncementPage.html">Announcements</a>
+    <a href="Attendance.html">Attendance</a>
+    <a href="GradePage.html">Grades</a>
+    <a href="CourseRegistraion.html">Course registration</a>
+    <a href="CurriculumPage.html">Curriculum</a>
+    <a href="ProfileSetting.html">Profile Settings</a>
   </div>
+
 
   <button id="openNav" >
     <img src="pngwing.com.png" sizes="10%" style="height: 2.5em; width: 2.5em;">
@@ -191,7 +194,7 @@
   <div id="logo_title" class="logo">
     <img src="Logo.png" alt="logo" width="60" height="60">
     <span style="font-size: 1.5em; margin-left: 10px;">Tishk International University</span>
-    <span class="system_title">System Information System</span>
+    <span class="system_title">Student Information System</span>
   </div>
 
   <main>
