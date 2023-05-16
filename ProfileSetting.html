@@ -6,15 +6,18 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="Style.css">
 </head>
 <body>
+
 	<!-- Navigation sidebar menu -->
 	<div class="sidebar">
+		<a href="HomePage.html">Home</a>
 		<a href="AnnouncementPage.html">Announcements</a>
 		<a href="Attendance.html">Attendance</a>
 		<a href="GradePage.html">Grades</a>
-		<a href="#">Course</a>
+		<a href="CourseRegistraion.html">Course registration</a>
 		<a href="CurriculumPage.html">Curriculum</a>
 		<a href="ProfileSetting.html">Profile Settings</a>
 	  </div>
@@ -27,11 +30,11 @@
 	  <div id="logo_title" class="logo">
 		<img src="Logo.png" alt="logo" width="60" height="60">
 		<span style="font-size: 1.5em; margin-left: 10px;">Tishk International University</span>
-		<span class="system_title">System Information System</span>
+		<span class="system_title">Student Information System</span>
 	  </div>
 	<section class="py-5 my-5">
 		<div class="container">
-			<h1 class="mb-1">Account Settings</h1>
+			<h1 class="mb-5">Account Settings</h1>
 			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
@@ -40,7 +43,7 @@
 						</div>
 						<h4 class="text-center">Kiran Acharya</h4>
 					</div>
-					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					<div class="nav flex-column nav-pills id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
 							<i class="fa fa-home text-center mr-1"></i> 
 							Account
@@ -49,14 +52,17 @@
 							<i class="fa fa-key text-center mr-1"></i> 
 							Password
 						</a>
-						<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-							<i class="fa fa-user text-center mr-1"></i> 
-							Security
+						<a class="nav-link" id="language-tab" data-toggle="pill" href="#language" role="tab" aria-controls="language" aria-selected="false">
+							<i class="fa-solid fa-language  mr-1"></i>
+							Language
 						</a>
-						<a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
-							<i class="fa fa-tv text-center mr-1"></i> 
-							Application
+						
+						<a class="nav-link" id="signOutButton" data-toggle="pill" href="#SignOut" role="tab" aria-controls="false" aria-selected="false" data-target="#signOutModal">
+							<i class="fa fa-sign-out text-center mr-1"></i> 
+							Sign out
 						</a>
+						  
+						  
 						
 					</div>
 				</div>
@@ -136,86 +142,24 @@
 							<button class="btn btn-light">Cancel</button>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-						<h3 class="mb-4">Security Settings</h3>
+					<!-- language setting -->
+					<div class="tab-pane fade" id="language" role="tabpanel" aria-labelledby="language-tab">
+						<h3 class="mb-4">Language Settings</h3>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>Login</label>
-								  	<input type="text" class="form-control">
+									<label>Language</label>
+									<select class="form-control">
+										<option value="en">English</option>
+										<option value="fr">Kurdish</option>
+										<option value="es">Arabic</option>
+										<option value="es">Turkish</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-								  	<label>Two-factor auth</label>
-								  	<input type="text" class="form-control">
 								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="recovery">
-										<label class="form-check-label" for="recovery">
-										Recovery
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-light">Cancel</button>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
-						<h3 class="mb-4">Application Settings</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="app-check">
-										<label class="form-check-label" for="app-check">
-										App check
-										</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
-										<label class="form-check-label" for="defaultCheck2">
-										Lorem ipsum dolor sit.
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<button class="btn btn-primary">Update</button>
-							<button class="btn btn-light">Cancel</button>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-						<h3 class="mb-4">Notification Settings</h3>
-						<div class="form-group">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="notification1">
-								<label class="form-check-label" for="notification1">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum accusantium accusamus, neque cupiditate quis
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="notification2" >
-								<label class="form-check-label" for="notification2">
-									hic nesciunt repellat perferendis voluptatum totam porro eligendi.
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="notification3" >
-								<label class="form-check-label" for="notification3">
-									commodi fugiat molestiae tempora corporis. Sed dignissimos suscipit
-								</label>
 							</div>
 						</div>
 						<div>
@@ -226,11 +170,45 @@
 				</div>
 			</div>
 		</div>
+
+		<div id="popupContainer">
+			<div class="popupContent">
+				<h3>Are you sure you want to sign out?</h3>
+				<span><button id="confirmSignOutButton">Confirm</button>
+			  <button id="cancelSignOutButton">Cancel</button></span>
+			</div>
+		  </div>
 	</section>
+
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+
+<script>
+	
+	const signOutButton = document.getElementById('signOutButton');
+const popupContainer = document.getElementById('popupContainer');
+const confirmSignOutButton = document.getElementById('confirmSignOutButton');
+const cancelSignOutButton = document.getElementById('cancelSignOutButton');
+
+signOutButton.addEventListener('click', function() {
+  popupContainer.style.display = 'block';
+});
+
+confirmSignOutButton.addEventListener('click', function() {
+	window.location.href = "loginPage.html";
+  popupContainer.style.display = 'none';
+});
+
+cancelSignOutButton.addEventListener('click', function() {
+  popupContainer.style.display = 'none';
+});
+
+
+  </script>
+  
+  
 </html>
