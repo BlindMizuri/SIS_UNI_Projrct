@@ -174,7 +174,7 @@ form.addEventListener("submit", (event) => {
   if (username.value === "" || password.value === "") {     // Check if either the username or password field is empty
     document.getElementById("errorMessage").innerHTML = "Incorrect username or password."   // Display an error message
   } else {
-    form.submit();   // Submit the form if the fields are not empty
+    window.location.href = "HomePage.html";   // Submit the form if the fields are not empty
   }
 });
 
