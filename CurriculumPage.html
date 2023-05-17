@@ -46,6 +46,8 @@ p{
   background-color: #fafafa;
 }
 
+
+
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -56,8 +58,7 @@ p{
 }
 
 .sidebar a:hover {
-  color: #ffffff;
-  background-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .sidebar a:hover::before {
   opacity: 1;
@@ -194,6 +195,7 @@ p{
     }
     .flexTable{
       display: flex;
+      width: 98%;
     }
     .SemesterRight{
       margin-left: 20px;
@@ -245,6 +247,44 @@ td {
   right: 10em;
 }
 }
+
+@media only screen and (max-width: 1400px) {
+	.sidebar {
+	  width: 210px;
+     
+	}
+	#course_colors{
+      display: flex;
+      margin-left: 66em;
+      padding-top: 1em;
+  }
+  
+  table{
+      border-collapse: collapse;
+        width: 50%;
+        border: 1px solid #000000;
+    }
+    #year{
+      width: 98%;
+    }
+	
+	#openNav {
+	  display: none;
+	}
+  .TableDiv{
+    width: 100%;
+  }
+  
+	main {
+	position: relative;
+	top: 5em;
+	left: 230px;
+	bottom: 0;
+	right: 10em;
+	margin-right: 5%;
+	width: 130%;
+  }
+  }
 		
 
 	</style>
@@ -258,7 +298,8 @@ td {
     <a href="Attendance.html">Attendance</a>
     <a href="GradePage.html">Grades</a>
     <a href="CourseRegistraion.html">Course registration</a>
-    <a href="CurriculumPage.html">Curriculum</a>
+    <a href="CurriculumPage.html" style="background-color: #007bff; color: #ffffff;">Curriculum</a>
+    <a href="RecordPage.html">Records</a>
     <a href="ProfileSetting.html">Profile Settings</a>
   </div>
 
@@ -276,12 +317,12 @@ td {
   
   <div style="display: flex;">
 	<h1>Curriculum</h1>
-  <div id="course_colors">
-    <p id="blue">Not taken yet</p>
-    <p id="green">Completed successfuly</p>
-    <p id="orange">Taken courses</p>
-    <p id="red">Failed courses</p>
-    <p id="grey">Excused courses</p>
+  <div class="topP" id="course_colors">
+    <p class="topP" id="blue">Not taken yet</p>
+    <p class="topP" id="green">Completed successfuly</p>
+    <p class="topP" id="orange">Taken courses</p>
+    <p class="topP" id="red">Failed courses</p>
+    <p class="topP" id="grey">Excused courses</p>
   </div>
   </div>
 
