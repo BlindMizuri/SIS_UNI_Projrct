@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Information System</title>
+    <script  src="script.js">// Function to toggle dark mode
+      function toggleDarkMode() {
+        if (localStorage.getItem('darkMode') === 'enabled') {
+          disableDarkMode();
+        } else {
+          enableDarkMode();
+        }
+      }
+    
+      // Check if dark mode preference is stored in localStorage
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        enableDarkMode();
+      } else {
+        disableDarkMode();
+      }
+      </script>
     <style>
 
 /* Global styles for the page */
@@ -19,7 +35,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Styles for the heading */
+/* Dark mode styles */
+body.dark-mode {
+            background-color: #333333;
+            color: #ffffff;
+        }
 
 /* Sidebar styling */
 .sidebar {
@@ -43,8 +63,7 @@ body {
 }
 
 .sidebar a:hover {
-  color: #ffffff;
-  background-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .sidebar a:hover::before {
   opacity: 1;
@@ -266,6 +285,26 @@ table {
       display: block;
     }
 
+    .notification-sign {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.new-sign {
+  background-color: #007bff;
+}
+
+
+.notification-row.pushed {
+  transform: translateY(40px); /* Adjust this value as needed */
+}
+
+
   </style>
 </head>
 <body>
@@ -273,11 +312,12 @@ table {
   <!-- Navigation sidebar menu -->
   <div class="sidebar">
     <a href="HomePage.html">Home</a>
-    <a href="AnnouncementPage.html">Announcements</a>
+    <a href="AnnouncementPage.html" style="background-color: #007bff; color: #ffffff;">Announcements</a>
     <a href="Attendance.html">Attendance</a>
     <a href="GradePage.html">Grades</a>
     <a href="CourseRegistraion.html">Course registration</a>
     <a href="CurriculumPage.html">Curriculum</a>
+    <a href="RecordPage.html">Records</a>
     <a href="ProfileSetting.html">Profile Settings</a>
   </div>
 
@@ -298,105 +338,125 @@ table {
     </div>
     <table id="announcementList">
       <tbody id="notification-table">
-
+        
       </tbody>
     </table>
     <div id="popup" class="popup">
       <div class="message">
         <div class="label">Name:</div>
         <div class="name">Alaa Ghazi</div>
-  
+    
         <div class="label">Title:</div>
         <div class="title">Homework</div>
-  
+    
         <div class="label">Published:</div>
         <div class="publish-date">2023-05-11</div>
-  
+    
         <div class="label">Content:</div>
         <div class="messageContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet nulla eu ex pretium ultrices. Vestibulum tempus eros a libero tincidunt, ut placerat ligula tincidunt. Duis fermentum, tellus at rhoncus efficitur, elit orci auctor est, id luctus est orci vel tellus. Donec vehicula mauris sit amet nisi consequat, eu eleifend lacus dignissim.</div>
-  
+    
         <div class="label">Deadline:</div>
         <div class="deadline">2023-05-20</div>
       </div>
+    </div>
+    
   
   </main>
 
   <script>
-const sidebar = document.querySelector('.sidebar');
-const openNav = document.getElementById('openNav');
-const closeNav = document.getElementById('closeNav');
-
-openNav.addEventListener('click', () => {
-  sidebar.classList.add('sidebar--open');
-});
-
-openNav.addEventListener('click', () => {
-  sidebar.classList.remove('sidebar--close');
-});
-
-
-const notifications = [
-  {
-    name: "Alaa Ghazi",
-    message: "Homework",
-    date: "2023-05-11"
-  },
-  {
-    name: "Rebin Muhammed",
-    message: "Web Design",
-    date: "2023-05-04"
-  },
-  {
-    name: "Savraddin",
-    message: "Course schedule",
-    date: "2023-05-01"
-  },
-];
-
-const table = document.getElementById("notification-table");
-
-notifications.forEach((notification) => {
-  const row = document.createElement("tr");
-  row.classList.add("notification-row");
-  row.className = `notification-row ${notification.read ? "" : "unread"}`;
-  row.innerHTML = `
-    <td>
-      <div class="notification-header">
-        <span class="notification-name">${notification.name}</span>
-        <span class="notification-message">${notification.message}</span>
-        <span class="notification-date">${notification.date}</span>
-      </div>
-    </td>
-  `;
-
-  const message = row.querySelector('.notification-header');
-  message.addEventListener('click', (event) => {
-    const clickedMessage = event.currentTarget;
-    const tableRect = table.getBoundingClientRect();
-    const messageRect = clickedMessage.getBoundingClientRect();
-    const top = messageRect.top - 20;
-    const left = messageRect.left - tableRect.left - 2;
-
-    popup.style.top = `${top}px`;
-    popup.style.left = `${left}px`;
-    popup.classList.toggle('show');
-  });
-
-  
-
-  table.appendChild(row);
-});
-
-function openNotification(message) {
-        window.location.href = `notification.html?message=${message}`;
+    function toggleDarkMode() {
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        disableDarkMode();
+      } else {
+        enableDarkMode();
       }
+    }
+  
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      enableDarkMode();
+    } else {
+      disableDarkMode();
+    }
+  </script>
+  
+  <script>
+    const table = document.getElementById('announcementList');
+  
+    const notifications = [
+      {
+        name: "Alaa Ghazi",
+        message: "Homework",
+        date: "2023-05-11",
+        sign: " "
+      },
+      {
+        name: "Rebin Muhammed",
+        message: "Web Design",
+        date: "2023-05-04",
+        sign: ""
+      },
+      {
+        name: "Savraddin",
+        message: "Course schedule",
+        date: "2023-05-01",
+        sign: ""
+      },
+    ];
+  
+    const tableBody = document.getElementById("notification-table");
+  
+    notifications.forEach((notification) => {
+      const row = document.createElement("tr");
+      row.classList.add("notification-row");
+      row.className = `notification-row ${notification.read ? "" : "unread"}`;
+      row.innerHTML = `
+        <td>
+          <div class="notification-header">
+            ${notification.sign ? `<span class="notification-sign">${notification.sign}</span>` : ""}
+            <span class="notification-name">${notification.name}</span>
+            <span class="notification-message">${notification.message}</span>
+            <span class="notification-date">${notification.date}</span>
+          </div>
+        </td>
+      `;
+  
+      const message = row.querySelector('.notification-header');
+      message.addEventListener('click', (event) => {
+        const clickedMessage = event.currentTarget;
+        const tableRect = table.getBoundingClientRect();
+        const messageRect = clickedMessage.getBoundingClientRect();
+        const top = messageRect.top - 20;
+        const left = messageRect.left - tableRect.left - 2;
+  
+        popup.style.top = `${top}px`;
+        popup.style.left = `${left}px`;
+        popup.classList.toggle('show');
+  
+        // Toggle class for rows below the clicked row
+        const rows = Array.from(document.getElementsByClassName('notification-row'));
+        const clickedRowIndex = rows.indexOf(clickedMessage.parentElement.parentElement);
+        const rowsBelow = rows.slice(clickedRowIndex + 1);
+        rowsBelow.forEach(row => {
+          row.classList.toggle('pushed');
+        });
+      });
+  
+      tableBody.appendChild(row);
+    });
 
+    const popup = document.getElementById('popup');
+    const originalTop = popup.offsetTop;
 
+    window.addEventListener('resize', () => {
+      const rows = Array.from(document.getElementsByClassName('notification-row'));
+      const rowsBelow = rows.slice(rows.indexOf(popup.parentElement) + 1);
+      const topDifference = popup.offsetTop - originalTop;
+      rowsBelow.forEach(row => {
+        row.style.transform = `translateY(${popup.offsetHeight + topDifference}px)`;
+      });
+    });
 
-      
-   
-
-     
+    
   </script>
   
 

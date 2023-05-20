@@ -49,8 +49,7 @@
 }
 
 .sidebar a:hover {
-  color: #ffffff;
-  background-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 .sidebar a:hover::before {
   opacity: 1;
@@ -168,6 +167,16 @@
   bottom: 0;
   right: 0;
 }
+.new-label {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+
+
 
     </style>
   </head>
@@ -179,9 +188,10 @@
     <a href="HomePage.html">Home</a>
     <a href="AnnouncementPage.html">Announcements</a>
     <a href="Attendance.html">Attendance</a>
-    <a href="GradePage.html">Grades</a>
+    <a href="GradePage.html" style="background-color: #007bff; color: #ffffff;">Grades</a>
     <a href="CourseRegistraion.html">Course registration</a>
     <a href="CurriculumPage.html">Curriculum</a>
+    <a href="RecordPage.html">Records</a>
     <a href="ProfileSetting.html">Profile Settings</a>
   </div>
 
@@ -337,6 +347,7 @@ for (let i = 0; i < rows.length; i++) {
 
   });
 }
+
 
 
   </script>

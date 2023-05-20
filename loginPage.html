@@ -37,35 +37,33 @@
         display: flex;
 
       }
-
+      /* sets the maximum width of the img */
       .logo img {
         max-width: 200px;
         transition: transform 0.4s;
       }
-      .logo span {
-        font-size: 32px;
-        color: #262626;
-        font-weight: 700;
-      }
-      /* Styles for the form elements */
-      h1 {
+
+      /* System title */
+      h1 { 
         font-size: 28px;
         margin-bottom: 20px;
         text-align: center;
         color: #262626;
       }
-
+      
+      /* Styles for the form elements */
       form {
         display: flex;
         flex-direction: column;
       }
-
+      /* style all labels for the input */
       label {
         margin-bottom: 10px;
         color: #262626;
         font-weight: 600;
       }
 
+      /* inputs like ID PASS and Button */
       input[type="text"],
       input[type="password"] {
         padding: 10px;
@@ -75,14 +73,14 @@
         box-sizing: border-box;
         font-size: 16px;
       }
-      input[type="text"]::placeholder,
+      input[type="text"]::placeholder,  /*placeholder is the text inside the input before clicked*/
 input[type="password"]::placeholder {
   color: #999;
   font-style: italic;
   font-size: 14px;
 }
-      
-      input[type="submit"] {
+            /* login button*/
+      input[type="submit"] {    
         background-color: #0095f6;
         color: #fff;
         padding: 10px;
@@ -92,15 +90,17 @@ input[type="password"]::placeholder {
         font-size: 16px;
         transition: background-color 0.3s;
       }
-
+    /* when mouse over change color to dark blue */
       input[type="submit"]:hover {
         background-color: #04082c;
       }
-      
+        
+      /* when clicked it moves the button down 2PX */
       input[type="submit"]:active {
         transform: translateY(2px);
       }
-       /* Styles for the error message */
+
+      /* Style for when user makes wrong login */
       #errorMessage {
 			color: red;
 			margin-top: 10px;
@@ -135,11 +135,11 @@ input[type="password"]::placeholder {
       const logo = document.getElementById("logo");
       const submit = document.getElementById("submit");
     
-      // Animate the logo on hover
+      // Animate the logo on hover when mouse over
       logo.addEventListener("mouseover", () => {
         logo.style.transform = "scale(1.2)";
       });
-    
+    // Animate the logo on hover when mouse NOT over
       logo.addEventListener("mouseout", () => {
         logo.style.transform = "scale(1)";
       });
@@ -153,6 +153,7 @@ input[type="password"]::placeholder {
         submit.style.backgroundColor = "#0095f6";
       });
     
+      //animation for when login is clicked it makes the button go down 2px
       submit.addEventListener("mousedown", () => {
         submit.style.transform = "translateY(2px)";
       });
@@ -171,6 +172,7 @@ const password = document.getElementById("password");
 form.addEventListener("submit", (event) => {
   event.preventDefault();   // Prevent the form from submitting by default
 
+  
   if (username.value === "" || password.value === "") {     // Check if either the username or password field is empty
     document.getElementById("errorMessage").innerHTML = "Incorrect username or password."   // Display an error message
   } else {
